@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'wheelbarrow/cli'
+Wheelbarrow::CLI.start

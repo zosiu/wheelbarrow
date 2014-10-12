@@ -2,3 +2,5 @@ Style/Documentation:
   Enabled: false
 Metrics/LineLength:
   Max: 100
+Style/FileName:
+  Exclude: ['bin/git-bb-pull-request']
