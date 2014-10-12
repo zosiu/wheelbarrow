@@ -1,6 +1,3 @@
 require 'wheelbarrow/version'
+require 'wheelbarrow/config'
 require 'wheelbarrow/authenticator'
-
-module Wheelbarrow
-  # Your code goes here...
-end

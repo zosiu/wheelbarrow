@@ -1,9 +1,8 @@
-require 'rubygems'
 require 'singleton'
 require 'oauth'
-require 'yaml'
 require 'launchy'
-require 'thor/shell/basic'
+require 'thor'
+require_relative 'config'
 
 module Wheelbarrow
   class Authenticator
@@ -12,21 +11,9 @@ module Wheelbarrow
     attr_reader :oauth_client
 
     def initialize
-      load_config
+      @config = Config.instance.fetch
       authenticate
-      dump_config
-    end
-
-    def config_file_path
-      File.expand_path "#{config_dir}/#{config_file_name}"
-    end
-
-    def config_file_name
-      'config.yml'
-    end
-
-    def config_dir
-      File.expand_path('~/.wheelbarrow')
+      Config.instance.dump @config
     end
 
     private
@@ -35,29 +22,10 @@ module Wheelbarrow
       @shell ||= Thor::Shell::Basic.new
     end
 
-    def create_config_dir
-      Dir.mkdir(config_dir) unless File.directory?(config_dir)
-    end
-
-    def load_config
-      @config = YAML.load_file config_file_path
-    rescue Errno::ENOENT
-      @config = {}
-    end
-
-    def dump_config
-      create_config_dir
-
-      File.open(config_file_path, 'w') { |f| YAML.dump @config, f  }
-    end
-
     def oauth_consumer
       @consumer ||= OAuth::Consumer.new @config[:consumer_key],
                                         @config[:consumer_secret],
-                                        site: 'https://bitbucket.org',
-                                        request_token_path: '/!api/1.0/oauth/request_token',
-                                        authorize_path: '/!api/1.0/oauth/authenticate',
-                                        access_token_path: '/!api/1.0/oauth/access_token'
+                                        Config.instance.bitbucket_oauth_config
     end
 
     def fetch_consumer_creditetntials
