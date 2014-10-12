@@ -2,8 +2,8 @@ require 'rubygems'
 require 'singleton'
 require 'oauth'
 require 'yaml'
-require 'highline/import'
 require 'launchy'
+require 'thor/shell/basic'
 
 module Wheelbarrow
   class Authenticator
@@ -31,6 +31,10 @@ module Wheelbarrow
 
     private
 
+    def shell
+      @shell ||= Thor::Shell::Basic.new
+    end
+
     def create_config_dir
       Dir.mkdir(config_dir) unless File.directory?(config_dir)
     end
@@ -44,8 +48,7 @@ module Wheelbarrow
     def dump_config
       create_config_dir
 
-      stringified_config = @config.map { |k, v| [k, v.to_s] }.to_h
-      File.open(config_file_path, 'w') { |f| YAML.dump stringified_config, f  }
+      File.open(config_file_path, 'w') { |f| YAML.dump @config, f  }
     end
 
     def oauth_consumer
@@ -58,14 +61,14 @@ module Wheelbarrow
     end
 
     def fetch_consumer_creditetntials
-      @config[:consumer_key] = ask 'Enter your consumer_key:  '
-      @config[:consumer_secret] = ask 'Enter your consumer secret:  '
+      @config[:consumer_key] = shell.ask 'Enter your consumer_key:'
+      @config[:consumer_secret] = shell.ask 'Enter your consumer secret:'
     end
 
     def fetch_token_creditentials
       request_token = oauth_consumer.get_request_token
       Launchy.open request_token.authorize_url
-      verifier = ask 'Authorize wheelbarrow and enter the verifier code you are assigned:  '
+      verifier = shell.ask 'Authorize wheelbarrow and enter the verifier code you are assigned:'
       access_token = request_token.get_access_token oauth_verifier: verifier
       @config[:token] = access_token.token
       @config[:token_secret] = access_token.secret
