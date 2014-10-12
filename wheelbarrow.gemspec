@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency 'thor', '~> 0.19.1'
   spec.add_runtime_dependency 'oauth', '~> 0.4.7'
   spec.add_runtime_dependency 'launchy', '~> 2.4.2'
   spec.add_runtime_dependency 'highline', '~> 1.6.21'
