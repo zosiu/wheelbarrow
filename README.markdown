@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/luckythirteen/wheelbarrow.png?label=ready&title=Ready)](https://waffle.io/luckythirteen/wheelbarrow)
 # Wheelbarrow
 
 [![Gem Version](https://badge.fury.io/rb/wheelbarrow.svg)](http://badge.fury.io/rb/wheelbarrow)
