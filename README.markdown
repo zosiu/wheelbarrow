@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/LuckyThirteen/wheelbarrow/badges/gpa.svg)](https://codeclimate.com/github/LuckyThirteen/wheelbarrow)
 [![Codeship Status for LuckyThirteen/wheelbarrow](https://www.codeship.io/projects/5f0d9af0-33fe-0132-f9b7-7a72371aeacb/status)](https://www.codeship.io/projects/40700)
 
+[![Stories in Ready](https://badge.waffle.io/luckythirteen/wheelbarrow.svg?label=ready&title=Ready)](http://waffle.io/luckythirteen/wheelbarrow)
+
 ## About
   Wheelbarrow is a command line utility for sending BitBucket pull requests.
 
