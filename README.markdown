@@ -9,6 +9,8 @@
 ## About
   Wheelbarrow is a command line utility for sending BitBucket pull requests.
 
+  ![Wheelbarrow demo](wheelbarrow.gif "")
+
 ## Installation
   `gem install wheelbarrow`
 
