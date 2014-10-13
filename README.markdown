@@ -1,8 +1,8 @@
 # Wheelbarrow
 
-[![Codeship Status for LuckyThirteen/wheelbarrow](https://www.codeship.io/projects/5f0d9af0-33fe-0132-f9b7-7a72371aeacb/status)](https://www.codeship.io/projects/40700)
-
+[![Gem Version](https://badge.fury.io/rb/wheelbarrow.svg)](http://badge.fury.io/rb/wheelbarrow)
 [![Code Climate](https://codeclimate.com/github/LuckyThirteen/wheelbarrow/badges/gpa.svg)](https://codeclimate.com/github/LuckyThirteen/wheelbarrow)
+[![Codeship Status for LuckyThirteen/wheelbarrow](https://www.codeship.io/projects/5f0d9af0-33fe-0132-f9b7-7a72371aeacb/status)](https://www.codeship.io/projects/40700)
 
 ## About
   Wheelbarrow is a command line utility for sending BitBucket pull requests.
