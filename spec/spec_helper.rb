@@ -7,8 +7,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.filter_run :focus
-
   config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.order = :random

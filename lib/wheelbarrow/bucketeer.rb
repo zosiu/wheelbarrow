@@ -11,9 +11,11 @@ module Wheelbarrow
       @bb_client = Authenticator.instance.oauth_client
     end
 
-    def send_pull_request!(target_branch: 'master',
-                           title: Utils.last_commit_message,
-                           description: '')
+    def send_pull_request!(options = {})
+      target_branch = options[:target_branch] || 'master'
+      title = options[:target_title] || Utils.last_commit_message
+      description = options[:description]
+
       payload = pull_request_body(target_branch, title, description).to_json
 
       res = @bb_client.post pull_request_url,
