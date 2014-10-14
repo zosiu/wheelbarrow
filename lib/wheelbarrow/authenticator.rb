@@ -29,7 +29,7 @@ module Wheelbarrow
     end
 
     def fetch_consumer_creditetntials
-      @config[:consumer_key] = shell.ask 'Enter your consumer_key:'
+      @config[:consumer_key] = shell.ask 'Enter your consumer key:'
       @config[:consumer_secret] = shell.ask 'Enter your consumer secret:'
     end
 

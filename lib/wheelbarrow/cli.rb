@@ -30,6 +30,8 @@ module Wheelbarrow
         pr_response = Bucketeer.instance.send_pull_request! args
         puts pretty_pr_status(pr_response)
       end
+    rescue => e
+      puts e.message
     end
     map ['pull-request', 'pr'] => :pull_request
 

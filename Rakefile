@@ -32,17 +32,17 @@ end
 # simple rake task to output a changelog between two commits, tags ...
 # output is formatted simply, commits are grouped under each author name
 #
-desc "generate changelog with nice clean output"
-task :changelog, :since_c, :until_c do |t, args|
+desc 'generate changelog with nice clean output'
+task :changelog, :since_c, :until_c do |_, args|
   since_c = args[:since_c] || `git tag | head -1`.chomp
   until_c = args[:until_c]
-  cmd=`git log --pretty='format:%ci::%an <%ae>::%s::%H' #{since_c}..#{until_c}`
+  cmd = `git log --pretty='format:%ci::%an <%ae>::%s::%H' #{since_c}..#{until_c}`
 
-  entries = Hash.new
-  changelog_content = String.new
+  entries = {}
+  changelog_content = ''
 
   cmd.split("\n").each do |entry|
-    _, author, subject, hash = entry.chomp.split("::")
+    _, author, subject, hash = entry.chomp.split('::')
     entries[author] ||= []
     entries[author] << "#{subject} (#{hash})" unless subject =~ /Merge/
   end
